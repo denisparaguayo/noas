@@ -66,22 +66,18 @@
 		
 	</head>
 	<body class="bg-purple-50 text-gray-900 max-w-screen-xl mx-auto">
-		<header
-			class=" p-4 text-purple-500 flex justify-between items-center relative">
+		<header class="p-4 text-purple-500 flex justify-between items-center relative">
 			<div class="flex items-center space-x-3">
-				<img src="images/logo.png" alt="Logo" class="logo-custom" />				
+				<a href="index.html">
+					<img src="images/logo.png" alt="Logo" class="logo-custom" />
+				</a>
 			</div>
 			<button id="menu-toggle" class="md:hidden text-purple-500 text-2xl ">☰</button>
-			<nav
-				id="menu"
-				class="hidden absolute top-full left-0 w-full bg-purple-600 text-purple-500 md:relative md:flex md:bg-transparent md:w-auto z-50">
-				<ul
-					class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
+			<nav id="menu" class="hidden absolute top-full left-0 w-full bg-purple-600 text-purple-500 md:relative md:flex md:bg-transparent md:w-auto z-50">
+				<ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
 					<li><a href="#home" class="block hover:underline">Home</a></li>
-					<li>
-						<a href="#services" class="block hover:underline">Services</a>
-					</li>
-					<li><a href="#about" class="block hover:underline">About Us</a></li>
+					<li><a href="#services" class="block hover:underline">Services</a></li>
+					<li><a href="/about.html" class="block hover:underline">About Us</a></li>
 					<li><a href="#contact" class="block hover:underline">Contact</a></li>
 				</ul>
 			</nav>
@@ -142,19 +138,7 @@
 						</p>
 					</div>
 				</a>
-				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
-					<img
-						src="images/3.jpg"
-						alt="Post-Construction Cleaning"
-						class="w-full h-40 object-cover rounded-md" />
-					<h3 class="mt-4 text-xl font-semibold text-purple-600">
-						Post-Construction Cleaning
-					</h3>
-					<p class="mt-2">
-						Removing all dust and debris from newly built or renovated spaces.
-					</p>
-				</div>
-				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+				<a href="officecleaning.html">	<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
 					<img
 						src="images/4.jpg"
 						alt="Office Cleaning"
@@ -165,19 +149,22 @@
 					<p class="mt-2">
 						Maintain a clean, productive workspace for employees and clients.
 					</p>
-				</div>
-				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
-					<img
-						src="images/5.jpg"
-						alt="Janitorial Services"
-						class="w-full h-40 object-cover rounded-md" />
-					<h3 class="mt-4 text-xl font-semibold text-purple-600">
-						Janitorial Services
-					</h3>
-					<p class="mt-2">
-						Routine cleaning and maintenance for commercial spaces.
-					</p>
-				</div>
+				</div></a>
+			
+				<a href="janitorial.html">
+					<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+						<img
+							src="images/5.jpg"
+							alt="Janitorial Services"
+							class="w-full h-40 object-cover rounded-md" />
+						<h3 class="mt-4 text-xl font-semibold text-purple-600">
+							Janitorial Services
+						</h3>
+						<p class="mt-2">
+							Routine cleaning and maintenance for commercial spaces.
+						</p>
+					</div>
+				</a>
 			</div>
 		</section>
 
