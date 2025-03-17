@@ -11,9 +11,9 @@
 			  "@context": "https://schema.org",
 			  "@type": "LocalBusiness",
 			  "name": "Noa Cleaning Service LLC",
-			  "image": "URL_de_la_imagen_representativa",
+			  "image": "https://noas.netlify.app/images/logo.png",
 			  "@id": "",
-			  "url": "URL_del_sitio_web",
+			  "url": "https://noas.netlify.app/",
 			  "telephone": "2403067480",
 			  "address": {
 				"@type": "PostalAddress",
@@ -45,11 +45,10 @@
 			  "sameAs": [
 				"URL_de_Facebook",
 				"URL_de_Instagram",
-				"etc."
 			  ],
 			  "areaServed": ["Gaithersburg", "Maryland", "DMV Area"],
 			  "description": "At Noa Cleaning Service LLC, we are committed to providing top-tier cleaning solutions that transform spaces into spotless, welcoming environments. Whether it's your home, office, or a newly constructed building, our team ensures that every detail is taken care of with precision and care.",
-			  "logo": "URL_del_logo",
+			  "logo": "https://noas.netlify.app/images/logo.png",
 			  "serviceType": ["House Cleaning", "Office Cleaning", "Post-Construction Cleaning", "Move In/Move Out Cleaning", "Janitorial Services"],
 			  "email": "noacleanservice23@gmail.com"
 			}
@@ -198,11 +197,56 @@
 			<p class="mt-2">
 				Schedule your free consultation today and experience the Noa difference.
 			</p>
-			<a
-				href="https://wa.me/YOUR_PHONE_NUMBER"
-				class="mt-4 inline-block bg-green-500 text-white px-6 py-3 rounded-lg text-lg"
-				>Message Us on WhatsApp</a
-			>
+		
+			<div class="mt-4">
+				<label for="name" class="block text-left">Your Name:</label>
+				<input type="text" id="name" class="w-full border p-2 rounded" placeholder="Enter your name">
+			</div>
+		
+			<div class="mt-4">
+				<label for="service" class="block text-left">Select Service:</label>
+				<select id="service" class="w-full border p-2 rounded">
+					<option value="">Select a service</option>
+					<option value="House Cleaning">House Cleaning</option>
+					<option value="Office Cleaning">Office Cleaning</option>
+					<option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
+					<option value="Move In/Move Out Cleaning">Move In/Move Out Cleaning</option>
+					<option value="Janitorial Services">Janitorial Services</option>
+				</select>
+			</div>
+		
+			<button id="whatsappButton" class="mt-4 bg-green-500 text-white px-6 py-3 rounded-lg text-lg">
+				Send to WhatsApp
+			</button>
 		</section>
+		<footer class="bg-purple-200 p-4 text-center">
+			<div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4">
+				<div>
+					<p>
+						Address: &#x1F4CD;
+						<a href="https://www.google.com/maps/place/406+Girard+St,+Gaithersburg,+MD+20877" target="_blank" class="text-purple-600 hover:underline">
+							406 Girard St, Gaithersburg, MD 20877
+						</a>
+					</p>
+				</div>
+				<div>
+					<p>
+						Email: &#x1F4E7;
+						<a href="mailto:noacleanservice23@gmail.com" class="text-purple-600 hover:underline">
+							noacleanservice23@gmail.com
+						</a>
+					</p>
+				</div>
+				<div>
+					<p>
+						Phone: &#x1F4DE;
+						<a href="tel:12403067480" class="text-purple-600 hover:underline">
+							+1 (240) 306-7480
+						</a>
+					</p>
+				</div>
+			</div>
+			<p class="mt-4">&copy; 2025 Noa Cleaning Service LLC. All rights reserved.</p>
+		</footer>
 	</body>
 </html>

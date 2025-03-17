@@ -18,3 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 });
+
+document
+	.getElementById('whatsappButton')
+	.addEventListener('click', function () {
+		const name = document.getElementById('name').value;
+		const service = document.getElementById('service').value;
+		const message = `Name: ${name}\nService: ${service}`;
+		const encodedMessage = encodeURIComponent(message);
+		const whatsappUrl = `https://wa.me/12403067480?text=${encodedMessage}`;
+		window.open(whatsappUrl, '_blank');
+	});
