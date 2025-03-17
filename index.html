@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Noa Cleaning Service LLC</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="css.css">
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "LocalBusiness",
+			  "name": "Noa Cleaning Service LLC",
+			  "image": "URL_de_la_imagen_representativa",
+			  "@id": "",
+			  "url": "URL_del_sitio_web",
+			  "telephone": "2403067480",
+			  "address": {
+				"@type": "PostalAddress",
+				"streetAddress": "406 Girard St",
+				"addressLocality": "Gaithersburg",
+				"addressRegion": "MD",
+				"postalCode": "20877",
+				"addressCountry": "US"
+			  },
+			  "geo": {
+				"@type": "GeoCoordinates",
+				"latitude": "39.1027",
+				"longitude": "-77.2117"
+			  },
+			  "openingHoursSpecification": [
+				{
+				  "@type": "OpeningHoursSpecification",
+				  "dayOfWeek": [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday"
+				  ],
+				  "opens": "07:30",
+				  "closes": "17:00"
+				}
+			  ],
+			  "sameAs": [
+				"URL_de_Facebook",
+				"URL_de_Instagram",
+				"etc."
+			  ],
+			  "areaServed": ["Gaithersburg", "Maryland", "DMV Area"],
+			  "description": "At Noa Cleaning Service LLC, we are committed to providing top-tier cleaning solutions that transform spaces into spotless, welcoming environments. Whether it's your home, office, or a newly constructed building, our team ensures that every detail is taken care of with precision and care.",
+			  "logo": "URL_del_logo",
+			  "serviceType": ["House Cleaning", "Office Cleaning", "Post-Construction Cleaning", "Move In/Move Out Cleaning", "Janitorial Services"],
+			  "email": "noacleanservice23@gmail.com"
+			}
+			</script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+			rel="stylesheet" />
+		<script defer src="script.js"></script>
+		
+	</head>
+	<body class="bg-purple-50 text-gray-900 max-w-screen-xl mx-auto">
+		<header
+			class=" p-4 text-purple-500 flex justify-between items-center relative">
+			<div class="flex items-center space-x-3">
+				<img src="images/logo.png" alt="Logo" class="logo-custom" />				
+			</div>
+			<button id="menu-toggle" class="md:hidden text-purple-500 text-2xl ">☰</button>
+			<nav
+				id="menu"
+				class="hidden absolute top-full left-0 w-full bg-purple-600 text-purple-500 md:relative md:flex md:bg-transparent md:w-auto z-50">
+				<ul
+					class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
+					<li><a href="#home" class="block hover:underline">Home</a></li>
+					<li>
+						<a href="#services" class="block hover:underline">Services</a>
+					</li>
+					<li><a href="#about" class="block hover:underline">About Us</a></li>
+					<li><a href="#contact" class="block hover:underline">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section id="home" class="text-center py-16 bg-purple-100 relative">
+			<img
+				src="images/bg_1.jpg"
+				alt="Cleaning Service"
+				class="absolute inset-0 w-full h-full object-cover opacity-50" />
+			<div class="relative max-w-4xl mx-auto">
+				<h1 class="text-4xl font-bold">
+					Professional Cleaning Services in DMV Area
+				</h1>
+				<p class="mt-4 text-lg">
+					Serving Maryland, Washington DC, and Virginia with expert house,
+					commercial, and post-construction cleaning services.
+				</p>
+				<a
+					href="#contact"
+					class="mt-6 inline-block bg-purple-500 text-white px-6 py-3 rounded-lg text-lg"
+					>Get a Free Quote</a
+				>
+			</div>
+		</section>
+
+		<section id="services" class="p-8">
+			<h2 class="text-3xl font-bold text-center text-purple-600">
+				Our Services
+			</h2>
+			<a href="/hcleaning.html">
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+					<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+						<img
+							src="images/1.jpg"
+							alt="House Cleaning"
+							class="w-full h-40 object-cover rounded-md" />
+						<h3 class="mt-4 text-xl font-semibold text-purple-600">
+							House Cleaning
+						</h3>
+						<p class="mt-2">
+							Regular and deep cleaning to keep your home spotless and
+							comfortable.
+						</p>
+					</div>
+			</a>
+				<a href="/moveinout.html">
+					<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+						<img
+							src="images/2.jpg"
+							alt="Move In/Move Out Cleaning"
+							class="w-full h-40 object-cover rounded-md" />
+						<h3 class="mt-4 text-xl font-semibold text-purple-600">
+							Move In/Move Out Cleaning
+						</h3>
+						<p class="mt-2">
+							Thorough cleaning to prepare your home for new residents.
+						</p>
+					</div>
+				</a>
+				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+					<img
+						src="images/3.jpg"
+						alt="Post-Construction Cleaning"
+						class="w-full h-40 object-cover rounded-md" />
+					<h3 class="mt-4 text-xl font-semibold text-purple-600">
+						Post-Construction Cleaning
+					</h3>
+					<p class="mt-2">
+						Removing all dust and debris from newly built or renovated spaces.
+					</p>
+				</div>
+				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+					<img
+						src="images/4.jpg"
+						alt="Office Cleaning"
+						class="w-full h-40 object-cover rounded-md" />
+					<h3 class="mt-4 text-xl font-semibold text-purple-600">
+						Office Cleaning
+					</h3>
+					<p class="mt-2">
+						Maintain a clean, productive workspace for employees and clients.
+					</p>
+				</div>
+				<div class="bg-white p-4 shadow-md rounded-lg text-center service-card">
+					<img
+						src="images/5.jpg"
+						alt="Janitorial Services"
+						class="w-full h-40 object-cover rounded-md" />
+					<h3 class="mt-4 text-xl font-semibold text-purple-600">
+						Janitorial Services
+					</h3>
+					<p class="mt-2">
+						Routine cleaning and maintenance for commercial spaces.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="p-8 bg-purple-200">
+			<h2 class="text-2xl font-bold">About Us</h2>
+			<p class="mt-4">
+				At Noa Cleaning Service LLC, we are committed to providing top-tier
+				cleaning solutions that transform spaces into spotless, welcoming
+				environments. Whether it's your home, office, or a newly constructed
+				building, our team ensures that every detail is taken care of with
+				precision and care.
+			</p>
+		</section>
+
+		<section id="contact" class="p-8 text-center">
+			<h2 class="text-3xl font-bold">Contact Us</h2>
+			<p class="mt-2">
+				Schedule your free consultation today and experience the Noa difference.
+			</p>
+			<a
+				href="https://wa.me/YOUR_PHONE_NUMBER"
+				class="mt-4 inline-block bg-green-500 text-white px-6 py-3 rounded-lg text-lg"
+				>Message Us on WhatsApp</a
+			>
+		</section>
+	</body>
+</html>
