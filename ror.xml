@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for https://noas.netlify.app/</title>
+  <link>https://noas.netlify.app/</link>
+
+<item>
+     <link>https://noas.netlify.app/</link>
+     <title>Noa Cleaning Service LLC</title>
+     <description>Noa Cleaning Service LLC</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/about</link>
+     <title>About Us | Noa Cleaning Service LLC</title>
+     <description>Learn about Noa Cleaning Service LLC, a professional cleaning company serving the DMV area. Founded by Noa, an immigrant from Paraguay with over 20 years of experience in the US.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/contact</link>
+     <title>Contact Us | Noa Cleaning Service LLC</title>
+     <description>Contact Noa Cleaning Service LLC via WhatsApp. Fill out our form to send us a message directly.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/hcleaning</link>
+     <title>
+			Professional House Cleaning Services | Noa Cleaning Service LLC
+		</title>
+     <description>Get reliable house cleaning services in the DMV area. We offer dusting, vacuuming, sanitizing, and more. Schedule your cleaning today!</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/moveinout</link>
+     <title>
+			Professional Move In/Move Out Cleaning | Noa Cleaning Service LLC
+		</title>
+     <description>Prepare your home for new residents with our move in/move out cleaning services in the DMV area. We provide thorough cleaning for a seamless transition.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/officecleaning</link>
+     <title>
+			Professional House Cleaning Services | Noa Cleaning Service LLC
+		</title>
+     <description>Get reliable house cleaning services in the DMV area. We offer dusting, vacuuming, sanitizing, and more. Schedule your cleaning today!</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://noas.netlify.app/janitorial</link>
+     <title>Professional Janitorial Services | Noa Cleaning Service LLC</title>
+     <description>Maintain a clean and organized environment with our janitorial services in the DMV area. We offer daily, weekly, and monthly cleaning plans tailored to your needs.</description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  
