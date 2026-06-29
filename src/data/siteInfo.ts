@@ -1,10 +1,10 @@
 export const siteInfo = {
   name: "Noa Cleaning Service",
   legalName: "Noa Cleaning Service LLC",
-  description: "Noa Cleaning Service LLC - Professional cleaning services in the DMV area. Serving Maryland, Washington DC, and Virginia with expert house, commercial, and post-construction cleaning.",
+  description: "Professional cleaning services in the DMV area by Noa Cleaning Service LLC. Expert residential, commercial, and post-construction cleaning solutions.",
   shortDescription: "Professional cleaning solutions that transform spaces into spotless, healthy, and welcoming environments in the DMV area.",
   founder: "Nohemi Alvarado",
-  yearsOfExperience: 17,
+  yearsOfExperience: new Date().getFullYear() - 2009,
   email: "noacleanservice23@gmail.com",
   phone: {
     display: "+1 (240) 306-7480",
