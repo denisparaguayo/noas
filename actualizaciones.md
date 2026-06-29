@@ -39,7 +39,7 @@ Esta es una de las áreas con mayor impacto para el negocio, ya que permitirá c
    * Este código le comunica a los buscadores que **Noa Cleaning Service** es una empresa de limpieza registrada (`CleaningService`), detalla su área de servicio (Maryland, Washington DC, Virginia), su ubicación física exacta, teléfonos, horarios y su catálogo completo de servicios asociados a cada página. Esto incrementa la posibilidad de aparecer en los resultados locales de Google Maps y búsquedas de la zona (DMV area).
 3. **Automatización del Mapa del Sitio (Sitemap):**
    * Integramos la extensión oficial `@astrojs/sitemap`. El sitemap ya no es un archivo estático y obsoleto; ahora se autogenera en cada publicación de la web, garantizando que Google indexe instantáneamente cualquier página nueva.
-   * Se eliminaron archivos viejos y duplicados (`sitemap.xml`, `ror.xml`, `urllist.txt`) y se configuró correctamente el archivo `robots.txt` para dirigir a los rastreadores de Google al nuevo sitemap dinámico.
+   * Se eliminaron archivos viejos y duplicados (`sitemap.xml`, `ror.xml`, `urllist.txt`) y se configuró correctamente el archivo `robots.txt` para dirigir a los rastreadores de Google al nuevo sitemap dinámico. Además, se añadió una regla de reescritura en `netlify.toml` para que la ruta tradicional `/sitemap.xml` muestre de forma interna el nuevo sitemap generado de forma dinámica y automática por Astro, evitando así errores 404.
 4. **Verificación de Propiedad de Google:**
    * Se integró la etiqueta de verificación de Google Search Console en la cabecera general del código para monitorear el rendimiento y los clics que reciba el sitio.
 
