@@ -1,6 +1,11 @@
 ---
 // src/components/AboutHome.astro
 import { siteInfo } from '../data/siteInfo';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <section id="about" class="py-24 bg-white relative overflow-hidden">
@@ -16,18 +21,28 @@ import { siteInfo } from '../data/siteInfo';
       </div>
       <div class="space-y-6">
         <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-          About Our Company
+          {lang === 'es' ? 'Sobre Nuestra Empresa' : 'About Our Company'}
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-2">Dedicated to Excellence Since Day One</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-2">
+          {lang === 'es' ? 'Dedicados a la Excelencia Desde el Primer Día' : 'Dedicated to Excellence Since Day One'}
+        </h2>
         <p class="text-stone-600 leading-relaxed text-lg">
-          At {siteInfo.legalName}, we are committed to providing top-tier cleaning solutions that transform spaces into spotless, welcoming, and healthy environments. 
+          {lang === 'es' ? (
+            `En ${siteInfo.legalName}, estamos comprometidos a brindar soluciones de limpieza de primer nivel que transforman los espacios en ambientes impecables, acogedores y saludables.`
+          ) : (
+            `At ${siteInfo.legalName}, we are committed to providing top-tier cleaning solutions that transform spaces into spotless, welcoming, and healthy environments.`
+          )}
         </p>
         <p class="text-stone-600 leading-relaxed">
-          Founded by {siteInfo.founder}, an immigrant from Paraguay with a strong work ethic and deep experience in the industry, our company has built a solid reputation in the {siteInfo.serviceArea.display}. We pride ourselves on attention to detail, eco-friendly practices, and reliability.
+          {lang === 'es' ? (
+            `Fundada por ${siteInfo.founder}, una inmigrante de Paraguay con una sólida ética de trabajo y profunda experiencia en la industria, nuestra empresa ha construido una sólida reputación en el ${t('site.serviceArea')}. Nos enorgullecemos de nuestra atención al detalle, prácticas ecológicas y confiabilidad.`
+          ) : (
+            `Founded by ${siteInfo.founder}, an immigrant from Paraguay with a strong work ethic and deep experience in the industry, our company has built a solid reputation in the ${t('site.serviceArea')}. We pride ourselves on attention to detail, eco-friendly practices, and reliability.`
+          )}
         </p>
         <div class="pt-4">
-          <a href="/about" class="inline-flex items-center justify-center px-6 py-3 border-2 border-amber-500 text-base font-semibold rounded-xl text-amber-700 hover:bg-amber-50 hover:text-amber-800 transition duration-300">
-            Read Our Story
+          <a href={translatePath('/about')} class="inline-flex items-center justify-center px-6 py-3 border-2 border-amber-500 text-base font-semibold rounded-xl text-amber-700 hover:bg-amber-50 hover:text-amber-800 transition duration-300">
+            {lang === 'es' ? 'Conozca Nuestra Historia' : 'Read Our Story'}
           </a>
         </div>
       </div>

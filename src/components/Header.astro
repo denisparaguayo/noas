@@ -1,16 +1,29 @@
 ---
 // src/components/Header.astro
 import { siteInfo } from '../data/siteInfo';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const pathname = Astro.url.pathname;
 const cleanPathname = pathname.replace(/\/$/, ""); // Remove trailing slash
 
-const isHomeActive = cleanPathname === "" || cleanPathname === "/index.html";
-const isAboutActive = cleanPathname === "/about" || cleanPathname === "/about.html";
-const isContactActive = cleanPathname === "/contact" || cleanPathname === "/contact.html";
+// Get path without language prefix for active states check
+const pathWithoutLang = lang === 'es' ? cleanPathname.replace(/^\/es/, "") : cleanPathname;
+const currentRoute = pathWithoutLang === "" ? "/" : pathWithoutLang;
+
+const isHomeActive = currentRoute === "/" || currentRoute === "/index.html";
+const isAboutActive = currentRoute === "/about" || currentRoute === "/about.html";
+const isContactActive = currentRoute === "/contact" || currentRoute === "/contact.html";
 
 const serviceRoutes = ["/hcleaning", "/moveinout", "/officecleaning", "/janitorial", "/postconstruction"];
-const isServicesActive = serviceRoutes.some(route => cleanPathname === route || cleanPathname === `${route}.html`);
+const isServicesActive = serviceRoutes.some(route => currentRoute === route || currentRoute === `${route}.html`);
+
+// Calculate links for the language switcher
+const alternateLang = lang === 'en' ? 'es' : 'en';
+const alternatePathname = translatePath(currentRoute, alternateLang);
 ---
 
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-stone-200/50 shadow-sm transition-all duration-300">
@@ -18,7 +31,7 @@ const isServicesActive = serviceRoutes.some(route => cleanPathname === route || 
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="flex items-center transition hover:opacity-90">
+        <a href={translatePath('/')} class="flex items-center transition hover:opacity-90">
           <img src="/images/logo.png" alt={`${siteInfo.name} Logo`} class="h-14 w-auto object-contain" />
         </a>
       </div>
@@ -26,10 +39,10 @@ const isServicesActive = serviceRoutes.some(route => cleanPathname === route || 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex space-x-8 items-center">
         <a 
-          href="/" 
+          href={translatePath('/')} 
           class={`font-medium transition duration-200 ${isHomeActive ? 'text-amber-600 font-semibold' : 'text-stone-600 hover:text-amber-600'}`}
         >
-          Home
+          {t('nav.home')}
         </a>
         
         <!-- Desktop Services Dropdown -->
@@ -38,7 +51,7 @@ const isServicesActive = serviceRoutes.some(route => cleanPathname === route || 
             type="button" 
             class={`flex items-center font-medium transition duration-200 focus:outline-none ${isServicesActive ? 'text-amber-600 font-semibold' : 'text-stone-600 hover:text-amber-600'}`}
           >
-            <span>Services</span>
+            <span>{t('nav.services')}</span>
             <svg class="ml-1.5 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
@@ -46,49 +59,64 @@ const isServicesActive = serviceRoutes.some(route => cleanPathname === route || 
           
           <!-- Dropdown menu -->
           <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-64 rounded-2xl bg-white border border-stone-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 transition-all duration-200 ease-out z-50 py-2">
-            <a href="/hcleaning" class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
-              <p class="font-semibold">House Cleaning</p>
-              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">Spotless & healthy home spaces</p>
+            <a href={translatePath('/hcleaning')} class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
+              <p class="font-semibold">{t('service.hcleaning.title')}</p>
+              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">{t('service.hcleaning.desc')}</p>
             </a>
-            <a href="/moveinout" class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
-              <p class="font-semibold">Move In/Out Cleaning</p>
-              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">Move-ready sanitization</p>
+            <a href={translatePath('/moveinout')} class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
+              <p class="font-semibold">{t('service.moveinout.title')}</p>
+              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">{t('service.moveinout.desc')}</p>
             </a>
-            <a href="/officecleaning" class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
-              <p class="font-semibold">Office Cleaning</p>
-              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">Pristine workspace solutions</p>
+            <a href={translatePath('/officecleaning')} class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
+              <p class="font-semibold">{t('service.officecleaning.title')}</p>
+              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">{t('service.officecleaning.desc')}</p>
             </a>
-            <a href="/janitorial" class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
-              <p class="font-semibold">Janitorial Services</p>
-              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">Scheduled commercial cleaning</p>
+            <a href={translatePath('/janitorial')} class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
+              <p class="font-semibold">{t('service.janitorial.title')}</p>
+              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">{t('service.janitorial.desc')}</p>
             </a>
-            <a href="/postconstruction" class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
-              <p class="font-semibold">Post-Construction</p>
-              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">Deep dust & debris removal</p>
+            <a href={translatePath('/postconstruction')} class="group/item block px-5 py-3 text-sm text-stone-700 hover:bg-amber-50/50 hover:text-amber-700 transition duration-150">
+              <p class="font-semibold">{t('service.postconstruction.title')}</p>
+              <p class="text-xs text-stone-500 group-hover/item:text-amber-700/80 mt-0.5 transition-colors duration-150">{t('service.postconstruction.desc')}</p>
             </a>
             <div class="border-t border-stone-50 mt-1 pt-1">
-              <a href="/#services" class="block px-5 py-2.5 text-xs font-bold text-center text-amber-600 hover:bg-amber-50 transition duration-150">
-                View All Services &rarr;
+              <a href={translatePath('/#services')} class="block px-5 py-2.5 text-xs font-bold text-center text-amber-600 hover:bg-amber-50 transition duration-150" set:html={t('service.all')}>
               </a>
             </div>
           </div>
         </div>
 
         <a 
-          href="/about" 
+          href={translatePath('/about')} 
           class={`font-medium transition duration-200 ${isAboutActive ? 'text-amber-600 font-semibold' : 'text-stone-600 hover:text-amber-600'}`}
         >
-          About Us
+          {t('nav.about')}
         </a>
         <a 
-          href="/contact" 
+          href={translatePath('/contact')} 
           class={`font-medium transition duration-200 ${isContactActive ? 'text-amber-600 font-semibold' : 'text-stone-600 hover:text-amber-600'}`}
         >
-          Contact
+          {t('nav.contact')}
         </a>
-        <a href="/contact" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-sm transition duration-200">
-          Get a Free Quote
+        <a href={translatePath('/contact')} class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-sm transition duration-200">
+          {t('btn.quote')}
         </a>
+
+        <!-- Language Switcher Desktop -->
+        <div class="flex items-center space-x-1 border-l border-stone-250/60 pl-4 ml-1">
+          <a 
+            href={lang === 'en' ? '#' : alternatePathname} 
+            class={`text-[11px] font-bold px-2.5 py-1.5 rounded-xl transition duration-200 ${lang === 'en' ? 'bg-amber-500 text-stone-950 shadow-sm pointer-events-none' : 'text-stone-500 hover:text-stone-850 hover:bg-stone-100'}`}
+          >
+            EN
+          </a>
+          <a 
+            href={lang === 'es' ? '#' : alternatePathname} 
+            class={`text-[11px] font-bold px-2.5 py-1.5 rounded-xl transition duration-200 ${lang === 'es' ? 'bg-amber-500 text-stone-950 shadow-sm pointer-events-none' : 'text-stone-500 hover:text-stone-850 hover:bg-stone-100'}`}
+          >
+            ES
+          </a>
+        </div>
       </nav>
 
       <!-- Mobile menu button -->
@@ -109,32 +137,51 @@ const isServicesActive = serviceRoutes.some(route => cleanPathname === route || 
   <!-- Mobile Menu, show/hide based on menu state. -->
   <div class="hidden md:hidden animate-fade-in" id="mobile-menu">
     <div class="px-3 pt-2 pb-4 space-y-1 bg-white border-b border-stone-200/50 shadow-lg">
-      <a href="/" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">Home</a>
+      <a href={translatePath('/')} class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">{t('nav.home')}</a>
       
       <!-- Mobile Collapsible Services -->
       <div>
         <button id="mobile-services-toggle" type="button" class="w-full flex justify-between items-center px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition focus:outline-none">
-          <span>Services</span>
+          <span>{t('nav.services')}</span>
           <svg id="mobile-services-arrow" class="h-4 w-4 transition-transform duration-200 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         <div id="mobile-services-menu" class="hidden pl-4 pr-2 py-2 space-y-1 bg-stone-50/50 rounded-xl mt-1">
-          <a href="/hcleaning" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">House Cleaning</a>
-          <a href="/moveinout" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">Move In / Move Out</a>
-          <a href="/officecleaning" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">Office Cleaning</a>
-          <a href="/janitorial" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">Janitorial Services</a>
-          <a href="/postconstruction" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">Post-Construction</a>
-          <a href="/#services" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-bold text-amber-600 hover:bg-stone-100 transition">All Services &rarr;</a>
+          <a href={translatePath('/hcleaning')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">{t('service.hcleaning.title')}</a>
+          <a href={translatePath('/moveinout')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">{t('service.moveinout.title')}</a>
+          <a href={translatePath('/officecleaning')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">{t('service.officecleaning.title')}</a>
+          <a href={translatePath('/janitorial')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">{t('service.janitorial.title')}</a>
+          <a href={translatePath('/postconstruction')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-medium text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition">{t('service.postconstruction.title')}</a>
+          <a href={translatePath('/#services')} class="mobile-nav-link block px-4 py-2.5 rounded-lg text-sm font-bold text-amber-600 hover:bg-stone-100 transition" set:html={t('service.all')}></a>
         </div>
       </div>
 
-      <a href="/about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">About Us</a>
-      <a href="/contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">Contact</a>
+      <a href={translatePath('/about')} class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">{t('nav.about')}</a>
+      <a href={translatePath('/contact')} class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-stone-700 hover:text-amber-600 hover:bg-stone-50 transition">{t('nav.contact')}</a>
       <div class="pt-4 pb-2 px-4 border-t border-stone-100 mt-2">
-        <a href="/contact" class="w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-600 shadow transition">
-          Get a Free Quote
+        <a href={translatePath('/contact')} class="w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-600 shadow transition">
+          {t('btn.quote')}
         </a>
+      </div>
+
+      <!-- Mobile Language Switcher -->
+      <div class="flex items-center justify-between px-4 py-3 border-t border-stone-100 mt-2">
+        <span class="text-sm font-semibold text-stone-500">Language / Idioma</span>
+        <div class="flex items-center space-x-2">
+          <a 
+            href={lang === 'en' ? '#' : alternatePathname} 
+            class={`text-xs font-bold px-3 py-1.5 rounded-xl transition ${lang === 'en' ? 'bg-amber-500 text-stone-950 pointer-events-none' : 'text-stone-600 bg-stone-50 hover:bg-stone-100'}`}
+          >
+            English
+          </a>
+          <a 
+            href={lang === 'es' ? '#' : alternatePathname} 
+            class={`text-xs font-bold px-3 py-1.5 rounded-xl transition ${lang === 'es' ? 'bg-amber-500 text-stone-950 pointer-events-none' : 'text-stone-600 bg-stone-50 hover:bg-stone-100'}`}
+          >
+            Español
+          </a>
+        </div>
       </div>
     </div>
   </div>

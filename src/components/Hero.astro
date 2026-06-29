@@ -1,33 +1,84 @@
 ---
 // src/components/Hero.astro
-import { siteInfo } from '../data/siteInfo';
+import { siteInfo } from "../data/siteInfo";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section id="home" class="relative bg-stone-950 text-white py-28 sm:py-36 overflow-hidden">
+<section
+  id="home"
+  class="relative bg-stone-950 text-white py-28 sm:py-36 overflow-hidden"
+>
   <div class="absolute inset-0">
-    <img src="/images/bg_1.jpg" alt="Cleaning Service Background" class="w-full h-full object-cover opacity-25" />
+    <img
+      src="/images/bg_1.jpg"
+      alt="Cleaning Service Background"
+      class="w-full h-full object-cover opacity-25"
+    />
     <!-- Warm amber gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-900/90 to-transparent"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-900/90 to-transparent"
+    >
+    </div>
     <!-- Soft warm glow behind the text -->
-    <div class="absolute -left-1/4 top-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"></div>
+    <div
+      class="absolute -left-1/4 top-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"
+    >
+    </div>
   </div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl">
-      <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-6 tracking-wide animate-pulse">
-        ✨ Trusted Cleaning Experts
+      <span
+        class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-6 tracking-wide animate-pulse"
+      >
+        {
+          lang === "es"
+            ? "✨ Especialistas en Limpieza Certificados"
+            : "✨ Trusted Cleaning Experts"
+        }
       </span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-        Professional Cleaning Services in the <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">{siteInfo.serviceArea.display}</span>
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight"
+      >
+        {
+          lang === "es" ? (
+            <>
+              Servicios de Limpieza Profesional en{" "}
+              <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+                {t("site.serviceArea")}
+              </span>
+            </>
+          ) : (
+            <>
+              Professional Cleaning Services in the{" "}
+              <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+                {t("site.serviceArea")}
+              </span>
+            </>
+          )
+        }
       </h1>
       <p class="text-lg sm:text-xl text-stone-300 mb-10 leading-relaxed">
-        Serving {siteInfo.serviceArea.regions.slice(0, -1).join(', ')}, and {siteInfo.serviceArea.regions.slice(-1)} with premium house, commercial, janitorial, and post-construction cleaning services.
+        {
+          lang === "es"
+            ? `Servicios premium de limpieza residencial, comercial, de conserjería y post-construcción en ${siteInfo.serviceArea.regions.slice(0, -1).join(", ")} y ${siteInfo.serviceArea.regions.slice(-1)}.`
+            : `Serving ${siteInfo.serviceArea.regions.slice(0, -1).join(", ")}, and ${siteInfo.serviceArea.regions.slice(-1)} with premium house, commercial, janitorial, and post-construction cleaning services.`
+        }
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#contact" class="inline-flex items-center justify-center px-7 py-4 border border-transparent text-base font-bold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-[0_4px_20px_rgba(245,158,11,0.25)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.4)] hover:-translate-y-0.5 transition-all duration-300">
-          Get a Free Quote
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center px-7 py-4 border border-transparent text-base font-bold rounded-xl text-stone-950 bg-amber-500 hover:bg-amber-400 shadow-[0_4px_20px_rgba(245,158,11,0.25)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.4)] hover:-translate-y-0.5 transition-all duration-300"
+        >
+          {t("btn.quote")}
         </a>
-        <a href="#services" class="inline-flex items-center justify-center px-7 py-4 border border-stone-700 text-base font-semibold rounded-xl text-stone-300 hover:text-white hover:bg-stone-900/80 hover:border-stone-600 transition-all duration-300">
-          Explore Services
+        <a
+          href="#services"
+          class="inline-flex items-center justify-center px-7 py-4 border border-stone-700 text-base font-semibold rounded-xl text-stone-300 hover:text-white hover:bg-stone-900/80 hover:border-stone-600 transition-all duration-300"
+        >
+          {lang === "es" ? "Explorar Servicios" : "Explore Services"}
         </a>
       </div>
     </div>

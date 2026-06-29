@@ -1,64 +1,45 @@
-# Reporte de Actualizaciones y Optimización Web
+# El Reflejo de tu Dedicación: Tu Nuevo Sitio Web
 **Cliente:** Noa Cleaning Service LLC  
 **Fecha:** 29 de junio de 2026  
-**Estado del Proyecto:** Fase de Optimización e Infraestructura Completada  
+**Estado:** ¡Listo para brillar y conectar!  
 
 ---
 
-## 1. Resumen Ejecutivo
-Hemos llevado a cabo una serie de optimizaciones técnicas y de diseño sobre el sitio web de **Noa Cleaning Service**. El objetivo principal ha sido migrar el sitio a una arquitectura moderna para mejorar la velocidad de carga, estructurar el contenido de manera profesional, facilitar su mantenimiento futuro e implementar las mejores prácticas de posicionamiento en motores de búsqueda (SEO) y visibilidad local.
+## ✨ Tu esencia, ahora en el mundo digital
+
+Tus **17 años de experiencia** transformando espacios en hogares acogedores y oficinas productivas merecían un reflejo digital a la altura. Hemos rediseñado y optimizado tu sitio web no solo para que sea rápido y moderno, sino para que **transmita la confianza, el orden y la calidez** que caracterizan a **Noa Cleaning Service**.
+
+Aquí tienes un resumen sencillo de cómo hemos preparado tu nueva casa en internet para recibir a tus clientes:
 
 ---
 
-## 2. Detalle de Actualizaciones e Implementaciones
+## 1. Un puente sin barreras: Ahora totalmente bilingüe (Español & Inglés)
+* **Conexión directa:** Diseñamos un sistema de traducción completo. Ahora, tanto las familias de habla hispana como las de habla inglesa en el área DMV sentirán la cercanía de tu servicio desde el primer clic.
+* **Textos conmovedores:** Adaptamos cada frase (desde la bienvenida en el *Hero* hasta los detalles de reserva) con un tono cercano, invitando al cliente a confiarte su espacio para recuperar su tranquilidad y tiempo libre.
+* **Detección inteligente de idioma:** Si un cliente ingresa al sitio en inglés pero su navegador está configurado en español, la web lo detecta automáticamente y le muestra una opción sutil para cambiar al español con un solo clic.
 
-### A. Migración de Arquitectura a Astro
-* **Modernización del Framework:** El sitio se ha migrado completamente a **Astro**, una herramienta de última generación que genera HTML ultraligero y rápido de cargar.
-* **Componentes Reutilizables:** Se modularizó el código del sitio. Ahora elementos repetitivos como el encabezado (Header), el pie de página (Footer) y el diseño base (Layout) son componentes independientes. Esto significa que cualquier cambio futuro se realiza en un solo lugar y se aplica a toda la web de forma automática.
-* **Limpieza de Archivos:** Los archivos HTML antiguos se movieron a un directorio de referencia (`old_html_reference`) para mantener limpio el entorno de trabajo sin perder el histórico.
+## 2. Experiencia impecable y ordenada (UI/UX)
+* **La elegancia de la sencillez:** Quitamos textos innecesarios del menú para que tu logotipo sea el protagonista. Un diseño limpio transmite profesionalismo al instante.
+* **Servicios a un clic de distancia:** Creamos un menú desplegable interactivo y elegante (dropdown). Tus clientes podrán encontrar exactamente lo que buscan (*House Cleaning, Move In/Out, Office, Janitorial* o *Post-Construction*) de forma fluida desde su computadora o celular.
+* **Detalles pulidos con mimo:** Ajustamos cada descripción técnica por palabras que tocan el corazón: *"Espacios impecables y saludables"* en lugar de simplemente limpios, y *"zócalos"* en lugar de términos genéricos.
 
-### B. Centralización de Información del Negocio (`siteInfo.ts`)
-Para evitar discrepancias en los datos de contacto y horarios en distintas páginas del sitio, se creó un archivo de configuración centralizado:
-* **Datos unificados:** Dirección física (Gaithersburg, MD), coordenadas geográficas de mapa, números de teléfono (con enlace directo a WhatsApp), correo electrónico, fundador, años de experiencia (17 años) y horarios comerciales detallados.
-* **Efecto práctico:** Si el negocio cambia de horario o de teléfono en el futuro, solo se modifica una línea de código en este archivo central y todo el sitio web (incluidos los metadatos de Google) se actualizará instantáneamente.
-
-### C. Rediseño de Navegación y UI/UX
-* **Menú de Navegación Premium:** 
-  * Se removió el texto plano al lado del logo en el menú para dar un aspecto más limpio y centrar la identidad visual únicamente en el isotipo de la marca.
-  * Se diseñó un **menú desplegable (Dropdown) interactivo de Servicios** tanto para computadoras (efecto hover suave) como para dispositivos móviles (desplegable tipo acordeón). Esto facilita al usuario navegar directamente hacia el servicio específico que necesita (*House Cleaning, Move In/Out, Office Cleaning, Janitorial, Post-Construction*).
-* **Navegación Limpia y SEO-friendly:** Se eliminaron las extensiones `.html` de todos los enlaces internos (por ejemplo, de `/about.html` a `/about`), implementando rutas limpias que son más amigables para el usuario y mejor valoradas por Google.
-* **Paleta de Colores y Tipografía:** Se implementó una selección tipográfica moderna (*Outfit* para títulos y *Plus Jakarta Sans* para el cuerpo de texto) con colores cálidos y texturas suaves para proyectar profesionalismo y limpieza.
-
-### D. Optimización SEO (Posicionamiento en Motores de Búsqueda)
-Esta es una de las áreas con mayor impacto para el negocio, ya que permitirá captar clientes de manera orgánica en Google:
-
-1. **Meta Descripciones Optimizadas:**
-   * Ajustamos la longitud de las descripciones de búsqueda para cada página del sitio, asegurando que estén por debajo del límite de **160 caracteres** recomendado por Google. Esto evita que los textos aparezcan cortados en los resultados de búsqueda.
-2. **Esquema de Datos Estructurados (JSON-LD - Schema.org):**
-   * Creamos un componente dinámico (`SchemaMarkup.astro`) que inyecta código invisible para los usuarios pero vital para Google.
-   * Este código le comunica a los buscadores que **Noa Cleaning Service** es una empresa de limpieza registrada (`CleaningService`), detalla su área de servicio (Maryland, Washington DC, Virginia), su ubicación física exacta, teléfonos, horarios y su catálogo completo de servicios asociados a cada página. Esto incrementa la posibilidad de aparecer en los resultados locales de Google Maps y búsquedas de la zona (DMV area).
-3. **Automatización del Mapa del Sitio (Sitemap):**
-   * Integramos la extensión oficial `@astrojs/sitemap`. El sitemap ya no es un archivo estático y obsoleto; ahora se autogenera en cada publicación de la web, garantizando que Google indexe instantáneamente cualquier página nueva.
-   * Se eliminaron archivos viejos y duplicados (`sitemap.xml`, `ror.xml`, `urllist.txt`) y se configuró correctamente el archivo `robots.txt` para dirigir a los rastreadores de Google al nuevo sitemap dinámico. Además, se añadió una regla de reescritura en `netlify.toml` para que la ruta tradicional `/sitemap.xml` muestre de forma interna el nuevo sitemap generado de forma dinámica y automática por Astro, evitando así errores 404.
-4. **Verificación de Propiedad de Google:**
-   * Se integró la etiqueta de verificación de Google Search Console en la cabecera general del código para monitorear el rendimiento y los clics que reciba el sitio.
+## 3. Preparado para que Google te recomiende (SEO Local)
+* **Datos estructurados:** Inyectamos un "código de confianza" invisible (JSON-LD) para que Google entienda exactamente quién eres, qué servicios ofreces, tu horario y que operas en Maryland, Washington DC y Virginia. Esto te ayudará a destacar en Google Maps y búsquedas locales.
+* **Sin callejones sin salida:** Automatizamos el mapa de tu sitio (*Sitemap*) para que Google descubra tus páginas al instante. Además, configuramos redirecciones inteligentes para que ningún cliente ni buscador se tope con una pantalla de error (404), garantizando una experiencia continua.
+* **Descripciones breves y perfectas:** Ajustamos las descripciones de Google a menos de 160 caracteres. Así, cuando te busquen, verán un mensaje claro, profesional y completo en su pantalla.
 
 ---
 
-## 3. Estado de Archivos Modificados
+## 🛠️ Resumen del Trabajo Realizado
 
-| Componente/Archivo | Estado | Descripción del Cambio |
-| :--- | :--- | :--- |
-| `astro.config.mjs` & `package.json` | Actualizado | Configuración del dominio y adición de la integración de sitemaps dinámicos. |
-| `src/data/siteInfo.ts` | Actualizado | Base de datos central del negocio. Ajuste de descripciones bajo 160 caracteres. |
-| `src/components/Header.astro` | Actualizado | Estructura visual de navegación, menú desplegable táctil/móvil y remoción de texto redundante. |
-| `src/components/SchemaMarkup.astro` | **Nuevo** | Motor de datos estructurados para Google (SEO Local y Rich Snippets). |
-| `src/layouts/Layout.astro` | Actualizado | Inyección de verificación de Google, tipografía premium, enlaces canonicals automáticos y datos estructurados. |
-| Páginas de Servicios (`/pages/`) | Actualizados | Limpieza de descripciones meta para alinearse a las métricas del motor de búsqueda. |
+| ¿Qué mejoramos? | ¿Cómo beneficia a Noa Cleaning? |
+| :--- | :--- |
+| **Bilingüismo y Detección Automática** | Amplía tu alcance y ofrece cambiar al español si detecta que el navegador del usuario está en ese idioma. |
+| **Menú interactivo y moderno** | Hace que reservar o explorar tus servicios sea tan cómodo como entrar a una casa limpia. |
+| **Fórmula SEO Local e Invisible** | Te ayuda a aparecer de primero en la zona cuando alguien busque "limpieza profesional". |
+| **Estructura ultra-rápida (Astro)** | El sitio web carga al instante, evitando que los clientes se vayan por esperar a la pantalla. |
+| **Datos unificados (`siteInfo.ts`)** | Si cambias de teléfono o dirección, todo el sitio web se actualiza con cambiar un solo dato. |
 
 ---
 
-## 4. Siguientes Pasos Recomendados
-1. **Prueba de Rendimiento (Lighthouse):** Ejecutar una auditoría de velocidad para verificar que la carga sea menor a 1.5 segundos en dispositivos móviles.
-2. **Despliegue y Pruebas en Netlify:** Validar que el sitemap dinámico se genere correctamente en el build de producción de Netlify.
-3. **Monitoreo en Google Search Console:** Verificar la indexación de las páginas y la correcta lectura del Schema Markup de servicios locales.
+> *"Un espacio limpio no es solo estética, es salud, tranquilidad y el inicio de un gran día. Tu nuevo sitio web está listo para transmitir exactamente ese mensaje al mundo."*

@@ -27,7 +27,7 @@ export const siteInfo = {
   domain: "noas.netlify.app",
   canonicalBase: "https://noas.netlify.app",
   serviceArea: {
-    regions: ["Maryland", "Washington DC", "Virginia"],
+    regions: ["Maryland", "Washington D.C.", "Virginia"],
     display: "DMV area"
   },
   businessHours: {

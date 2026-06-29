@@ -1,0 +1,138 @@
+---
+// src/pages/es/hcleaning.astro
+import Layout from "../../layouts/Layout.astro";
+import { siteInfo } from "../../data/siteInfo";
+---
+
+<Layout
+  title={`Servicios Profesionales de Limpieza de Casas | ${siteInfo.legalName}`}
+  description={`Obtenga servicios confiables de limpieza de casas en el ${siteInfo.serviceArea.display}. Ofrecemos sacudido, aspirado, trapeado, desinfección y opciones ecológicas.`}
+>
+  <!-- Header Page Title -->
+  <section
+    class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden"
+  >
+    <div class="absolute inset-0">
+      <img
+        src="/images/1.jpg"
+        alt="Banner de limpieza de casas"
+        class="w-full h-full object-cover opacity-25"
+      />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+        Limpieza de Casas
+      </h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Mantenga su hogar impecable, saludable y cómodo con nuestros horarios de
+        limpieza personalizados.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Detail Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <!-- Main Image -->
+        <div>
+          <img
+            src="/images/1.jpg"
+            alt="Detalles de limpieza de casas"
+            class="rounded-2xl shadow-xl w-full h-[400px] object-cover"
+          />
+          <div
+            class="mt-6 bg-blue-50 p-6 rounded-2xl border border-blue-100/50"
+          >
+            <h3 class="text-lg font-bold text-blue-900 mb-2">
+              🌿 Opción de Limpieza Ecológica
+            </h3>
+            <p class="text-sm text-blue-800 leading-relaxed">
+              Nos preocupamos por su familia y mascotas. A petición, ofrecemos
+              opciones de productos de limpieza naturales y no tóxicos para
+              clientes con sensibilidades o alergias a productos químicos
+              fuertes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4">
+              Un Hogar Impecable y Libre de Estrés
+            </h2>
+            <p class="text-slate-600 leading-relaxed">
+              Nuestro servicio de limpieza residencial está diseñado para
+              devolverle su tiempo libre mientras mantiene una casa impecable.
+              Ya sea que necesite un horario semanal, quincenal o mensual
+              regular, o una limpieza profunda única, nuestros limpiadores
+              profesionales se aseguran de que cada rincón quede impecable.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">
+              Nuestra Limpieza de Casa Incluye:
+            </h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-600">
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Sacudir todas las superficies</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Aspirar alfombras y tapetes</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Trapear pisos</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Desinfectar baños e inodoros</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Limpieza profunda de la cocina</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Limpiar ventanas y espejos</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Sacar basura y reciclaje</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Limpiar zócalos e interruptores de luz</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CTAs -->
+          <div
+            class="pt-6 flex flex-col sm:flex-row gap-4 border-t border-slate-100"
+          >
+            <a
+              href={`https://wa.me/${siteInfo.phone.raw}?text=Hola!%20Estoy%20interesado%20en%20sus%20servicios%20de%20limpieza%20de%20casas.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200"
+            >
+              Reservar por WhatsApp
+            </a>
+            <a
+              href="/es/#services"
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-slate-200 text-base font-semibold rounded-xl text-slate-600 hover:bg-slate-50 transition duration-200"
+            >
+              Volver a Servicios
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

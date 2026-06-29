@@ -1,6 +1,10 @@
 ---
 // src/components/BusinessHours.astro
 import { siteInfo } from '../data/siteInfo';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="hours" class="py-14 bg-[#faf8f5] border-b border-stone-200/50">
@@ -16,8 +20,8 @@ import { siteInfo } from '../data/siteInfo';
           </svg>
         </div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mb-2">Our Business Hours</h2>
-          <p class="text-stone-500 text-sm">Book your appointment within our weekly schedule</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mb-2">{t('site.businessHours.title')}</h2>
+          <p class="text-stone-500 text-sm">{t('site.businessHours.subtitle')}</p>
         </div>
       </div>
       
@@ -28,7 +32,7 @@ import { siteInfo } from '../data/siteInfo';
             W
           </div>
           <div>
-            <p class="text-[11px] text-stone-500 font-bold uppercase tracking-wider">Weekdays ({siteInfo.businessHours.weekdays.days})</p>
+            <p class="text-[11px] text-stone-500 font-bold uppercase tracking-wider">{t('site.businessHours.weekdays')}</p>
             <p class="text-sm font-extrabold text-stone-850">{siteInfo.businessHours.weekdays.hours}</p>
           </div>
         </div>
@@ -38,7 +42,7 @@ import { siteInfo } from '../data/siteInfo';
             S
           </div>
           <div>
-            <p class="text-[11px] text-stone-500 font-bold uppercase tracking-wider">{siteInfo.businessHours.saturdays.days}</p>
+            <p class="text-[11px] text-stone-500 font-bold uppercase tracking-wider">{t('site.businessHours.saturdays')}</p>
             <p class="text-sm font-extrabold text-stone-850">{siteInfo.businessHours.saturdays.hours}</p>
           </div>
         </div>

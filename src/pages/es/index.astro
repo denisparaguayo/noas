@@ -1,0 +1,18 @@
+---
+// src/pages/es/index.astro
+import Layout from '../../layouts/Layout.astro';
+import { siteInfo } from '../../data/siteInfo';
+import Hero from '../../components/Hero.astro';
+import BusinessHours from '../../components/BusinessHours.astro';
+import ServicesHome from '../../components/ServicesHome.astro';
+import AboutHome from '../../components/AboutHome.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<Layout title={`${siteInfo.legalName} - Servicios de Limpieza Profesional en el área DMV`}>
+  <Hero />
+  <BusinessHours />
+  <ServicesHome />
+  <AboutHome />
+  <ContactForm />
+</Layout>
