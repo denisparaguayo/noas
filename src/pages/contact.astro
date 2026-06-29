@@ -1,0 +1,168 @@
+---
+// src/pages/contact.astro
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteInfo';
+---
+
+<Layout 
+  title={`Contact Us | ${siteInfo.legalName}`} 
+  description={`Contact ${siteInfo.legalName}. Get a free quote for cleaning services in ${siteInfo.serviceArea.regions.join(', ')}. Call us at ${siteInfo.phone.display} or send us a message on WhatsApp.`}
+>
+  <!-- Header Page Title -->
+  <section class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/bg_3.jpg" alt="Cleaning Service Background" class="w-full h-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Contact Us</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        We are here to help. Reach out to get a free estimate or ask any questions about our services.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info Grid -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        
+        <!-- Contact Form -->
+        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm">
+          <h2 class="text-2xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+          <form id="contactForm" class="space-y-6" data-phone={siteInfo.phone.raw} data-name={siteInfo.name}>
+            <div>
+              <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                required 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none bg-white transition" 
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                required 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none bg-white transition" 
+                placeholder="your.email@example.com"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+              <textarea 
+                id="message" 
+                rows="4" 
+                required 
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none bg-white transition" 
+                placeholder="Tell us about your cleaning needs (size of property, frequency, etc.)"
+              ></textarea>
+            </div>
+            <button 
+              type="submit" 
+              class="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200"
+            >
+              <svg class="h-5 w-5 mr-2 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.729-1.464L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.458 5.463.002 9.907-4.437 9.911-9.906.002-2.65-1.02-5.14-2.881-7.006C16.58 1.83 14.1 .8 11.53.8c-5.463 0-9.91 4.437-9.915 9.905-.001 1.705.446 3.37 1.296 4.834L1.93 21.02l5.717-1.498L6.647 19.16zM17.147 14c-.267-.133-1.583-.78-1.829-.87-.247-.09-.427-.134-.607.134-.18.267-.697.87-.853 1.05-.157.18-.314.2-.58.067-.267-.133-1.127-.415-2.148-1.326-.794-.708-1.33-1.582-1.486-1.85-.156-.267-.017-.41.117-.544.12-.12.267-.313.4-.467.133-.153.178-.267.267-.447.089-.18.044-.337-.022-.47-.067-.134-.607-1.462-.832-2.006-.22-.53-.44-.457-.607-.466-.157-.008-.337-.01-.517-.01s-.472.067-.72.337c-.247.267-.943.923-.943 2.25s.965 2.61 1.1 2.79c.134.18 1.9 2.902 4.602 4.07 1.867.807 2.533.725 3.428.59.517-.078 1.583-.647 1.808-1.272.225-.625.225-1.16.157-1.272-.067-.113-.247-.197-.514-.33z"/>
+              </svg>
+              Send WhatsApp Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info & Map -->
+        <div class="flex flex-col justify-between space-y-8">
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-slate-900">Contact Information</h2>
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-lg flex-shrink-0">📍</div>
+                <div>
+                  <h3 class="font-semibold text-slate-900">Address</h3>
+                  <a href={siteInfo.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-600 transition">
+                    {siteInfo.address.display}
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-lg flex-shrink-0">📞</div>
+                <div>
+                  <h3 class="font-semibold text-slate-900">Phone</h3>
+                  <a href={`tel:${siteInfo.phone.raw}`} class="text-slate-600 hover:text-blue-600 transition">
+                    {siteInfo.phone.display}
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-lg flex-shrink-0">📧</div>
+                <div>
+                  <h3 class="font-semibold text-slate-900">Email</h3>
+                  <a href={`mailto:${siteInfo.email}`} class="text-slate-600 hover:text-blue-600 transition">
+                    {siteInfo.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Embed Google Maps -->
+          <div class="rounded-2xl overflow-hidden border border-slate-100 shadow-sm h-64 sm:h-80">
+            <iframe 
+              src={siteInfo.address.embedUrl} 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Hours Section (Compact) -->
+  <section class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">Our Business Hours</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left">
+        <div class="bg-white p-4 rounded-xl border border-slate-100 flex justify-between items-center shadow-sm">
+          <span class="font-semibold text-slate-700">Weekdays ({siteInfo.businessHours.weekdays.days})</span>
+          <span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">{siteInfo.businessHours.weekdays.hours}</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-100 flex justify-between items-center shadow-sm">
+          <span class="font-semibold text-slate-700">{siteInfo.businessHours.saturdays.days}</span>
+          <span class="text-sm font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">{siteInfo.businessHours.saturdays.hours}</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-100 flex justify-between items-center col-span-1 sm:col-span-2 shadow-sm">
+          <span class="font-semibold text-slate-700">{siteInfo.businessHours.sundays.days}</span>
+          <span class="text-sm font-bold text-rose-600 bg-rose-50 px-3 py-1 rounded-full">{siteInfo.businessHours.sundays.hours}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const whatsappPhone = contactForm.dataset.phone;
+    const siteName = contactForm.dataset.name;
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+      
+      const whatsappMessage = `Hello ${siteName}!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+</script>

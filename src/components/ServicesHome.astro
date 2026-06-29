@@ -1,0 +1,77 @@
+---
+// src/components/ServicesHome.astro
+import { siteInfo } from '../data/siteInfo';
+
+const services = [
+  {
+    title: "House Cleaning",
+    description: "Regular and deep cleaning to keep your home spotless, healthy, and comfortable.",
+    image: "/images/1.jpg",
+    link: "/hcleaning"
+  },
+  {
+    title: "Move In/Move Out Cleaning",
+    description: "Thorough sanitization to prepare your home for new residents or get your deposit back.",
+    image: "/images/2.jpg",
+    link: "/moveinout"
+  },
+  {
+    title: "Office Cleaning",
+    description: "Maintain a pristine, productive workspace for your employees and clients.",
+    image: "/images/4.jpg",
+    link: "/officecleaning"
+  },
+  {
+    title: "Janitorial Services",
+    description: "Routine scheduled cleaning and expert maintenance for commercial buildings.",
+    image: "/images/5.jpg",
+    link: "/janitorial"
+  },
+  {
+    title: "Post-Construction Cleaning",
+    description: "Deep dust and debris removal to make newly built or renovated spaces move-in ready.",
+    image: "/images/3.jpg",
+    link: "/postconstruction"
+  }
+];
+---
+
+<section id="services" class="py-24 bg-[#fbf9f6]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
+        Our Solutions
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-4 mb-4">Our Services</h2>
+      <p class="text-lg text-stone-600">
+        We offer high-quality, customized cleaning solutions tailored to your schedule and needs.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map(service => (
+        <a href={service.link} class="group bg-white rounded-3xl overflow-hidden border border-stone-200/50 hover:border-amber-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-350 flex flex-col">
+          <div class="relative h-60 overflow-hidden">
+            <img src={service.image} alt={service.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <span class="text-white text-xs font-semibold tracking-wider uppercase">View details &rarr;</span>
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between bg-white">
+            <div>
+              <h3 class="text-xl font-bold text-stone-900 group-hover:text-amber-700 transition duration-200 mb-2">
+                {service.title}
+              </h3>
+              <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                {service.description}
+              </p>
+            </div>
+            <span class="text-sm font-bold text-amber-600 inline-flex items-center group-hover:translate-x-1 transition-transform duration-200">
+              Read More <span class="ml-1">&rarr;</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+---
+// src/components/Footer.astro
+import { siteInfo } from '../data/siteInfo';
+---
+
+<footer class="bg-stone-950 text-stone-300 border-t border-stone-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand Section -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <img src="/images/logo.png" alt={`${siteInfo.legalName} Logo`} class="h-12 w-auto object-contain brightness-0 invert" />
+          <span class="text-lg font-bold text-white">{siteInfo.legalName}</span>
+        </div>
+        <p class="text-sm text-stone-400">
+          {siteInfo.shortDescription}
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-stone-450 hover:text-amber-400 transition duration-150">Home</a></li>
+          <li><a href="/#services" class="text-stone-450 hover:text-amber-400 transition duration-150">Services</a></li>
+          <li><a href="/about" class="text-stone-450 hover:text-amber-400 transition duration-150">About Us</a></li>
+          <li><a href="/contact" class="text-stone-450 hover:text-amber-400 transition duration-150">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contact Info</h3>
+        <p class="text-sm flex items-start space-x-3 text-stone-400">
+          <span class="text-amber-500 text-lg">📍</span>
+          <a href={siteInfo.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-amber-450 transition duration-155">
+            {siteInfo.address.display}
+          </a>
+        </p>
+        <p class="text-sm flex items-center space-x-3 text-stone-400">
+          <span class="text-amber-500 text-lg">📧</span>
+          <a href={`mailto:${siteInfo.email}`} class="hover:text-amber-450 transition duration-155">
+            {siteInfo.email}
+          </a>
+        </p>
+        <p class="text-sm flex items-center space-x-3 text-stone-400">
+          <span class="text-amber-500 text-lg">📞</span>
+          <a href={`tel:${siteInfo.phone.raw}`} class="hover:text-amber-450 transition duration-155">
+            {siteInfo.phone.display}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 pt-6 border-t border-stone-900 text-center text-xs text-stone-500">
+      <p>&copy; {new Date().getFullYear()} {siteInfo.legalName}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

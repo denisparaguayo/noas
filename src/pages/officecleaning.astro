@@ -1,0 +1,110 @@
+---
+// src/pages/officecleaning.astro
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteInfo';
+---
+
+<Layout 
+  title={`Professional Office Cleaning Services | ${siteInfo.legalName}`} 
+  description={`Maintain a clean, healthy, and highly productive workspace with our tailored office cleaning services in the ${siteInfo.serviceArea.display}. Punctual, reliable, and professional team.`}
+>
+  <!-- Header Page Title -->
+  <section class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/4.jpg" alt="Office Cleaning Banner" class="w-full h-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Office Cleaning</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Keep your business environment clean, sanitised, and professional for your team and clients.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Detail Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Main Image -->
+        <div>
+          <img src="/images/4.jpg" alt="Office Cleaning Details" class="rounded-2xl shadow-xl w-full h-[400px] object-cover" />
+          <div class="mt-6 bg-blue-50 p-6 rounded-2xl border border-blue-100/50">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">💼 Custom Corporate Schedules</h3>
+            <p class="text-sm text-blue-800 leading-relaxed">
+              We offer daily, weekly, or bi-weekly cleaning plans outside of normal business hours to prevent any disruptions to your workday. Get in touch to customize a plan that fits your corporate needs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4">A Productive Workspace</h2>
+            <p class="text-slate-600 leading-relaxed">
+              A clean workspace is key to employee productivity, safety, and a positive client experience. Our dedicated commercial cleaning team keeps offices, retail shops, and corporate headquarters spotless, ensuring high-touch surfaces are fully disinfected and sanitised.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Our Office Cleaning Includes:</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-600">
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Dusting & wiping desks and electronics</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Vacuuming carpets & mopping floors</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Sanitizing bathrooms & kitchens</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Emptying trash & recycling bins</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Disinfecting high-touch areas</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Cleaning interior glass & windows</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Cleaning breakrooms & meeting areas</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Refilling hygiene supplies</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CTAs -->
+          <div class="pt-6 flex flex-col sm:flex-row gap-4 border-t border-slate-100">
+            <a 
+              href={`https://wa.me/${siteInfo.phone.raw}?text=I'm%20interested%20in%20your%20office%20cleaning%20services.`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200"
+            >
+              Book via WhatsApp
+            </a>
+            <a 
+              href="/#services" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-slate-200 text-base font-semibold rounded-xl text-slate-600 hover:bg-slate-50 transition duration-200"
+            >
+              Back to Services
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

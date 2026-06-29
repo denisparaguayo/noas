@@ -1,0 +1,110 @@
+---
+// src/pages/postconstruction.astro
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteInfo';
+---
+
+<Layout 
+  title={`Professional Post-Construction Cleaning | ${siteInfo.legalName}`} 
+  description={`Get your newly built or renovated spaces ready with our post-construction cleaning services in the ${siteInfo.serviceArea.display}. We remove heavy dust, paint spots, and fine debris.`}
+>
+  <!-- Header Page Title -->
+  <section class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/3.jpg" alt="Post-Construction Cleaning Banner" class="w-full h-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Post-Construction Cleaning</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Deep, detailed cleanup to make recently built or renovated spaces move-in ready.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Detail Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Main Image -->
+        <div>
+          <img src="/images/3.jpg" alt="Post-Construction Cleaning Details" class="rounded-2xl shadow-xl w-full h-[400px] object-cover" />
+          <div class="mt-6 bg-blue-50 p-6 rounded-2xl border border-blue-100/50">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">🔨 Ready for Final Handover</h3>
+            <p class="text-sm text-blue-800 leading-relaxed">
+              Construction and renovation processes leave fine dust that settles everywhere. We specialize in deep, multi-phase cleanup (rough clean, light clean, final touch-up) to ensure a sparkling finish ready for inspection and move-in.
+            </p>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Complete Post-Renovation Care</h2>
+            <p class="text-slate-600 leading-relaxed">
+              Once the builders are done, there is still a massive amount of dust, drywall residue, paint splatters, and sticker adhesives left behind. Our expert cleaners are trained to handle the specific requirements of post-construction cleanups, safely restoring properties to pristine, liveable condition.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Our Post-Construction Services Include:</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-600">
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Removing heavy construction dust & debris</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Cleaning interior & exterior window glass</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Removing paint droplets & drywall spots</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Vacuuming tracks and floor borders</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Deep scrubbing & sanitizing bathrooms</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Wiping down cabinets & drawers (inside/out)</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Detail cleaning of baseboards & light switches</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Final touch-up sanitization</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CTAs -->
+          <div class="pt-6 flex flex-col sm:flex-row gap-4 border-t border-slate-100">
+            <a 
+              href={`https://wa.me/${siteInfo.phone.raw}?text=I'm%20interested%20in%20your%20post-construction%20cleaning%20services.`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200"
+            >
+              Book via WhatsApp
+            </a>
+            <a 
+              href="/#services" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-slate-200 text-base font-semibold rounded-xl text-slate-600 hover:bg-slate-50 transition duration-200"
+            >
+              Back to Services
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

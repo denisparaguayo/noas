@@ -1,0 +1,80 @@
+---
+// src/components/ContactForm.astro
+import { siteInfo } from '../data/siteInfo';
+---
+
+<section id="contact" class="py-24 bg-[#faf8f5] border-t border-stone-200/50 relative overflow-hidden">
+  <!-- Warm glow decorations -->
+  <div class="absolute -left-20 -bottom-20 w-72 h-72 bg-amber-500/5 rounded-full blur-3xl"></div>
+  <div class="absolute -right-20 -top-20 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
+      Contact Us
+    </span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-4 mb-4">Get a Free Quote</h2>
+    <p class="text-lg text-stone-600 mb-12">
+      Schedule your cleaning today or ask for a consultation. Fill out the details below to send us a direct message on WhatsApp.
+    </p>
+
+    <div class="bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-stone-200/60 text-left">
+      <form class="space-y-6" id="quoteForm" data-phone={siteInfo.phone.raw} data-name={siteInfo.name}>
+        <div>
+          <label for="name" class="block text-sm font-semibold text-stone-700 mb-2">Your Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            required 
+            class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 focus:outline-none transition-all duration-200" 
+            placeholder="Enter your full name"
+          />
+        </div>
+
+        <div>
+          <label for="service" class="block text-sm font-semibold text-stone-700 mb-2">Select Service</label>
+          <select 
+            id="service" 
+            required 
+            class="w-full px-4 py-3.5 rounded-xl border border-stone-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 focus:outline-none bg-white transition-all duration-200"
+          >
+            <option value="">Select a service</option>
+            <option value="House Cleaning">House Cleaning</option>
+            <option value="Move In/Move Out Cleaning">Move In/Move Out Cleaning</option>
+            <option value="Office Cleaning">Office Cleaning</option>
+            <option value="Janitorial Services">Janitorial Services</option>
+            <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
+          </select>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full inline-flex items-center justify-center px-6 py-4 border border-transparent text-base font-bold rounded-xl text-white bg-green-600 hover:bg-green-700 hover:shadow-lg transition duration-200 cursor-pointer"
+        >
+          <svg class="h-5 w-5 mr-2 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.729-1.464L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.458 5.463.002 9.907-4.437 9.911-9.906.002-2.65-1.02-5.14-2.881-7.006C16.58 1.83 14.1 .8 11.53.8c-5.463 0-9.91 4.437-9.915 9.905-.001 1.705.446 3.37 1.296 4.834L1.93 21.02l5.717-1.498L6.647 19.16zM17.147 14c-.267-.133-1.583-.78-1.829-.87-.247-.09-.427-.134-.607.134-.18.267-.697.87-.853 1.05-.157.18-.314.2-.58.067-.267-.133-1.127-.415-2.148-1.326-.794-.708-1.33-1.582-1.486-1.85-.156-.267-.017-.41.117-.544.12-.12.267-.313.4-.467.133-.153.178-.267.267-.447.089-.18.044-.337-.022-.47-.067-.134-.607-1.462-.832-2.006-.22-.53-.44-.457-.607-.466-.157-.008-.337-.01-.517-.01s-.472.067-.72.337c-.247.267-.943.923-.943 2.25s.965 2.61 1.1 2.79c.134.18 1.9 2.902 4.602 4.07 1.867.807 2.533.725 3.428.59.517-.078 1.583-.647 1.808-1.272.225-.625.225-1.16.157-1.272-.067-.113-.247-.197-.514-.33z"/>
+          </svg>
+          Send to WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const quoteForm = document.getElementById('quoteForm');
+  if (quoteForm) {
+    const whatsappPhone = quoteForm.dataset.phone;
+    const siteName = quoteForm.dataset.name;
+    quoteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const service = (document.getElementById('service') as HTMLSelectElement).value;
+      
+      const message = `Hello ${siteName}! I would like to request a quote.\n\nName: ${name}\nRequested Service: ${service}`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+</script>

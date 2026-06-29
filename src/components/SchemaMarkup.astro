@@ -1,0 +1,225 @@
+---
+// src/components/SchemaMarkup.astro
+import { siteInfo } from '../data/siteInfo';
+
+const canonicalBase = siteInfo.canonicalBase;
+const pathname = Astro.url.pathname;
+const cleanPath = pathname.replace(/\/$/, "").replace(/\.html$/, "");
+
+// 1. Base Business Schema (CleaningService)
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "CleaningService",
+  "@id": `${canonicalBase}/#business`,
+  "name": siteInfo.legalName,
+  "alternateName": siteInfo.name,
+  "url": canonicalBase,
+  "logo": `${canonicalBase}/images/logo.png`,
+  "image": `${canonicalBase}/images/logo.png`,
+  "description": siteInfo.description,
+  "telephone": siteInfo.phone.display,
+  "email": siteInfo.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteInfo.address.streetAddress,
+    "addressLocality": siteInfo.address.addressLocality,
+    "addressRegion": siteInfo.address.addressRegion,
+    "postalCode": siteInfo.address.postalCode,
+    "addressCountry": siteInfo.address.addressCountry
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": siteInfo.geo.latitude,
+    "longitude": siteInfo.geo.longitude
+  },
+  "areaServed": siteInfo.serviceArea.regions.map(region => ({
+    "@type": "AdministrativeArea",
+    "name": region
+  })),
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday"],
+      "opens": "08:30",
+      "closes": "14:00"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": siteInfo.founder
+  },
+  "knowsAbout": [
+    "House Cleaning",
+    "Office Cleaning",
+    "Commercial Cleaning",
+    "Janitorial Services",
+    "Post-Construction Cleaning",
+    "Move In/Out Cleaning"
+  ],
+  "priceRange": "$$"
+};
+
+// 2. Base WebSite Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${canonicalBase}/#website`,
+  "url": canonicalBase,
+  "name": siteInfo.name,
+  "description": siteInfo.description,
+  "publisher": {
+    "@id": `${canonicalBase}/#business`
+  }
+};
+
+// 3. Page specific schemas
+const schemas: any[] = [];
+
+// On the homepage, output website and business with offer catalog
+if (cleanPath === "" || cleanPath === "/index") {
+  const homeBusinessSchema = {
+    ...businessSchema,
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Noa Cleaning Services Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "House Cleaning Services",
+            "url": `${canonicalBase}/hcleaning`,
+            "description": "Keep your home spotless, healthy, and comfortable with our custom residential cleaning schedules."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Move In / Move Out Cleaning Services",
+            "url": `${canonicalBase}/moveinout`,
+            "description": "Deep sanitization and detailed cleaning to get your new or old home move-in or move-out ready."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Office Cleaning Services",
+            "url": `${canonicalBase}/officecleaning`,
+            "description": "Pristine office cleaning solutions to keep your workplace professional, neat, and highly productive."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Janitorial Services",
+            "url": `${canonicalBase}/janitorial`,
+            "description": "Scheduled commercial cleaning, restroom sanitizing, and waste management for businesses."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Post-Construction Cleaning Services",
+            "url": `${canonicalBase}/postconstruction`,
+            "description": "Remove deep dust, construction debris, paint splatters, and detailed cleanup after remodeling."
+          }
+        }
+      ]
+    }
+  };
+  schemas.push(homeBusinessSchema);
+  schemas.push(websiteSchema);
+} else if (cleanPath === "/about") {
+  // About Page
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${canonicalBase}/about/#webpage`,
+    "url": `${canonicalBase}/about`,
+    "name": `About Us | ${siteInfo.legalName}`,
+    "description": `Learn about ${siteInfo.legalName}. Founded by ${siteInfo.founder}, providing reliable, high-quality cleaning services in the DMV area for over ${siteInfo.yearsOfExperience} years.`,
+    "mainEntity": {
+      "@id": `${canonicalBase}/#business`
+    }
+  });
+} else if (cleanPath === "/contact") {
+  // Contact Page
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${canonicalBase}/contact/#webpage`,
+    "url": `${canonicalBase}/contact`,
+    "name": `Contact Us | ${siteInfo.legalName}`,
+    "description": `Contact ${siteInfo.legalName} for a free estimate on residential, office, or post-construction cleaning services. Serving Gaithersburg MD and the surrounding areas.`,
+    "mainEntity": {
+      "@id": `${canonicalBase}/#business`
+    }
+  });
+} else {
+  // Service Pages
+  const servicesMap: Record<string, { name: string; serviceType: string; description: string }> = {
+    "/hcleaning": {
+      name: "House Cleaning Services",
+      serviceType: "House Cleaning",
+      description: "Keep your home spotless, healthy, and comfortable with our custom residential cleaning schedules."
+    },
+    "/moveinout": {
+      name: "Move In / Move Out Cleaning Services",
+      serviceType: "Move In/Out Cleaning",
+      description: "Deep sanitization and detailed cleaning to get your new or old home move-in or move-out ready."
+    },
+    "/officecleaning": {
+      name: "Office Cleaning Services",
+      serviceType: "Office Cleaning",
+      description: "Pristine office cleaning solutions to keep your workplace professional, neat, and highly productive."
+    },
+    "/janitorial": {
+      name: "Janitorial Services",
+      serviceType: "Janitorial Cleaning",
+      description: "Scheduled commercial cleaning, restroom sanitizing, and waste management for businesses."
+    },
+    "/postconstruction": {
+      name: "Post-Construction Cleaning Services",
+      serviceType: "Post-Construction Cleaning",
+      description: "Remove deep dust, construction debris, paint splatters, and detailed cleanup after remodeling."
+    }
+  };
+
+  const currentService = servicesMap[cleanPath];
+  if (currentService) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": currentService.name,
+      "serviceType": currentService.serviceType,
+      "description": currentService.description,
+      "provider": {
+        "@type": "CleaningService",
+        "@id": `${canonicalBase}/#business`
+      },
+      "areaServed": siteInfo.serviceArea.regions.map(region => ({
+        "@type": "AdministrativeArea",
+        "name": region
+      })),
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD"
+      }
+    });
+  }
+}
+---
+
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

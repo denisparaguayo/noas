@@ -1,0 +1,109 @@
+---
+// src/pages/about.astro
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteInfo';
+---
+
+<Layout 
+  title={`About Us | ${siteInfo.legalName}`} 
+  description={`Learn about ${siteInfo.legalName}. Founded by ${siteInfo.founder}, providing reliable, high-quality cleaning services in the ${siteInfo.serviceArea.display} for over ${siteInfo.yearsOfExperience} years.`}
+>
+  <!-- Header Page Title -->
+  <section class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/bg_2.jpg" alt="Cleaning Service Background" class="w-full h-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">About Our Company</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Discover our history, values, and commitment to making your spaces shine.
+      </p>
+    </div>
+  </section>
+
+  <!-- Company Intro and Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Our Story</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-6">From Paraguay to the {siteInfo.serviceArea.display}</h2>
+          <div class="space-y-6 text-slate-600 leading-relaxed text-base">
+            <p>
+              Our founder, <strong>{siteInfo.founder}</strong>, immigrated to the United States from Paraguay over {siteInfo.yearsOfExperience} years ago. With a deep passion for order and cleanliness combined with a strong work ethic, she quickly realized the need for reliable, high-quality, and affordable cleaning services in the local community.
+            </p>
+            <p>
+              What started as a one-woman cleaning venture has grown into <strong>{siteInfo.legalName}</strong>, a trusted, highly recommended cleaning company serving homes, businesses, and construction sites throughout {siteInfo.serviceArea.regions.slice(0, -1).join(', ')}, and {siteInfo.serviceArea.regions.slice(-1)}.
+            </p>
+            <p>
+              Today, we have a dedicated team of experienced, background-checked cleaners who treat every space they enter with the utmost respect and care. We use eco-friendly cleaning techniques and safe products to protect both the environment and your family's health.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="/images/noa.png" alt="Noa Cleaning Service Team" class="rounded-2xl shadow-2xl w-full h-[450px] object-cover" />
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-blue-500/10 rounded-full blur-xl -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Grid -->
+  <section class="py-20 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Our Core Pillars</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Mission, Vision & Values</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Mission -->
+        <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-2xl font-bold mb-6">🎯</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Our Mission</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            To provide exceptional cleaning services that exceed expectations, transforming properties into healthy, pristine, and welcoming environments for families and businesses.
+          </p>
+        </div>
+
+        <!-- Values -->
+        <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-2xl font-bold mb-6">🤝</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Our Values</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Honesty, integrity, punctuality, and respect are at the center of everything we do. We believe in building long-lasting relationships of trust with our clients.
+          </p>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-2xl font-bold mb-6">⭐</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Satisfaction Guarantee</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Your satisfaction is our guarantee. If you are not completely satisfied with our work, we will return to your property and re-clean the area at no extra cost.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Ready to experience the Noa difference?</h2>
+      <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+        Schedule your free consultation today or speak with a member of our team via WhatsApp.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/contact" class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-blue-600 hover:bg-blue-700 shadow transition duration-200">
+          Get a Free Quote
+        </a>
+        <a href={`https://wa.me/${siteInfo.phone.raw}?text=I'm%20interested%20in%20learning%20more%20about%20Noa%20Cleaning%20Services.`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,110 @@
+---
+// src/pages/janitorial.astro
+import Layout from '../layouts/Layout.astro';
+import { siteInfo } from '../data/siteInfo';
+---
+
+<Layout 
+  title={`Professional Janitorial Services | ${siteInfo.legalName}`} 
+  description={`Ensure a clean, organized, and hygienic environment with our janitorial services in the ${siteInfo.serviceArea.display}. Daily, weekly, and monthly cleaning plans tailored to your needs.`}
+>
+  <!-- Header Page Title -->
+  <section class="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/5.jpg" alt="Janitorial Services Banner" class="w-full h-full object-cover opacity-25" />
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Janitorial Services</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Routine cleaning and meticulous maintenance programs to keep your facilities hygienic and operating smoothly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Detail Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Main Image -->
+        <div>
+          <img src="/images/5.jpg" alt="Janitorial Services Details" class="rounded-2xl shadow-xl w-full h-[400px] object-cover" />
+          <div class="mt-6 bg-blue-50 p-6 rounded-2xl border border-blue-100/50">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">🏢 Tailored Facility Management</h3>
+            <p class="text-sm text-blue-800 leading-relaxed">
+              We serve commercial properties, educational facilities, healthcare offices, and industrial buildings. We collaborate with facility managers to develop custom standard operating cleaning procedures.
+            </p>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Consistency and Care</h2>
+            <p class="text-slate-600 leading-relaxed">
+              A well-maintained facility is vital for public health, safety, and operational efficiency. Our professional janitorial services provide ongoing daily, weekly, or monthly maintenance to keep common areas, restrooms, hallways, and meeting rooms spotless and properly stocked.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Our Janitorial Services Include:</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-600">
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Daily trash removal & recycling</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Restroom deep cleaning & sanitizing</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Floor sweep, mop & floor care</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Wiping common area surfaces</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Glass & mirror cleaning</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Kitchenette & breakroom sanitization</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Dusting vents, blinds & high surfaces</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>Replenishing soap & paper products</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CTAs -->
+          <div class="pt-6 flex flex-col sm:flex-row gap-4 border-t border-slate-100">
+            <a 
+              href={`https://wa.me/${siteInfo.phone.raw}?text=I'm%20interested%20in%20your%20janitorial%20services.`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-semibold rounded-xl text-white bg-green-600 hover:bg-green-700 shadow transition duration-200"
+            >
+              Book via WhatsApp
+            </a>
+            <a 
+              href="/#services" 
+              class="inline-flex items-center justify-center px-6 py-3.5 border border-slate-200 text-base font-semibold rounded-xl text-slate-600 hover:bg-slate-50 transition duration-200"
+            >
+              Back to Services
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>
