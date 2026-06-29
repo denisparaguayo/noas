@@ -58,8 +58,15 @@ const translatePath = useTranslatedPath(lang);
     </div>
 
     <!-- Copyright -->
-    <div class="mt-12 pt-6 border-t border-stone-900 text-center text-xs text-stone-500">
+    <div class="mt-12 pt-6 border-t border-stone-900 text-center text-xs text-stone-500 flex flex-col items-center gap-2">
       <p>&copy; {new Date().getFullYear()} {siteInfo.legalName}. {t('footer.rightsReserved')}</p>
+      <p class="flex items-center gap-1 text-stone-400">
+        <span class="text-amber-400">⚡</span>
+        <span>{t('footer.poweredBy')}</span>
+        <a href="https://mbarete.online" target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline ml-0.5">
+          <span class="text-orange-500">Mbarete</span> <span class="text-emerald-400">Digital</span>
+        </a>
+      </p>
     </div>
   </div>
 </footer>

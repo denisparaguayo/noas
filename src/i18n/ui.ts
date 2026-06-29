@@ -40,6 +40,7 @@ export const ui = {
     'footer.quickLinks': 'Quick Links',
     'footer.contactInfo': 'Contact Info',
     'footer.rightsReserved': 'All rights reserved.',
+    'footer.poweredBy': 'Powered by',
 
     // Contact Form
     'contact.title': 'Get a Free Quote',
@@ -84,6 +85,7 @@ export const ui = {
     'footer.quickLinks': 'Enlaces rápidos',
     'footer.contactInfo': 'Información de contacto',
     'footer.rightsReserved': 'Todos los derechos reservados.',
+    'footer.poweredBy': 'Potenciado por',
 
     // Contact Form
     'contact.title': 'Presupuesto Gratis',
